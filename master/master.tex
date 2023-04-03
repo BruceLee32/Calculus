@@ -8,22 +8,17 @@
 \date{2023}
 \author{Kenny Chen}
 \begin{document}
-    
+
     \renewcommand{\thepage}{\roman{page}}
-    \maketitle
-    % \includepdf[pages=1, fitpaper=true]{./kuleuven-template/covers.pdf}
     \thispagestyle{empty}
-    % \input{copyright.tex}
     \pagestyle{plain}
     \setcounter{page}{0}
-    \input{../preface/template.tex}
-    % \input{summary.tex}
-    % \listofsymbols
     \tableofcontents
-    % \cleardoublepage
+    \cleardoublepage
     \renewcommand{\thepage}{\arabic{page}}
     \setcounter{page}{1}
     \pagestyle{normal}
+    
     \input{../limit/template.tex}
     \input{../derivative/template.tex}
 

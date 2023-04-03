@@ -5,6 +5,10 @@
 \input{../preamble/laterPreamble.tex}
 
 \begin{document}
+\renewcommand{\thepage}{\arabic{page}}
+\pagestyle{plain}
+\pagestyle{normal}
+
 \chapter{The Limit}
 \vspace{-2em}
 The limit is one of the most crucial topics in calculus, because it helps us define the derivative as well as calculate them. The limit is usually applied to a variable, where that variable approaches some number infinitely close.
@@ -23,7 +27,7 @@ There is generally one definition of the limit, the \emph{Epsilon Delta Definiti
     Where the lim stands for ``limit''. Both of these are pronounced ``as $x$ approaches $a$'', and that implies ``as $x$ becomes infinitely close to $a$''.
 \end{definition}
 
-What does it mean for $x$ to become ``infinitely close to $a$''? Let's consider for $a=2$. When we say $x\to 1$, this implies some number infinitely close to 2. This can be $1.0000....0001$ or $0.99999....9$; we can clearly see that both of these numbers are ``infinitely'' close to 2 (see Figure \ref{fig:infinitely-close}).  
+What does it mean for $x$ to become ``infinitely close to $a$''? Let's consider for $a=2$. When we say $x\to 2$, this implies some number infinitely close to 2. This can be $1.0000....0001$ or $0.99999....9$; we can clearly see that both of these numbers are ``infinitely'' close to 2 (see Figure \ref{fig:infinitely-close}).  
 
 \begin{figure}[ht]
     \centering
