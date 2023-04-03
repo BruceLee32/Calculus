@@ -1,0 +1,88 @@
+\documentclass[working]{tuftebook}
+
+\usepackage{standalone}
+\input{../preamble/preamble.tex}
+\input{../preamble/laterPreamble.tex}
+
+\begin{document}
+\chapter{The Derivative}
+\vspace{-2em}
+The derivative is the most essential thing in all of calculus, and it deals with the idea of rate of change. What is the velocity of a ball at that exact second? At that exact millisecond? At that exact microsecond? What about at that exact instance? The derivative deals with problems like these, and simplifies them down to a matter of mathematical expressions. Another major thing that calculus discovered is the integral. The integral deals with determining the area under certain curves,\sidenote{What is funny is that even though the derivative is the basic foundation for calculus, the fathers of calculus actually began calculus on its counterpart; the integral. You will learn soon enough that the derivative and integral are really opposites of each other.} but that is for later. 
+
+Let us begin with the definition of the derivative 
+\begin{definition}[The First Principle]\label{def:first-principle}
+    For a function $f(x)$ its derivative $f'(x)$ is defined by 
+    \[
+        \lim_{h\to 0} \frac{f(x+h)-f(x)}{h}
+    \]
+    As long as the function $f(x)$ is continuous.
+\end{definition}
+
+\begin{marginfigure}
+    \centering
+    \incfig{not-a-continuous-function}
+    \caption{A function $f(x)$ that is not continuous because there is a discontintuity.}
+    \label{fig:not-a-continuous-function}
+\end{marginfigure}
+
+Continuous just means that there are no random jumps in the curve, or in other words, the curve is connected. See Figure \ref{fig:not-a-continuous-function}.
+
+\begin{derivation}
+    It may not be clear, but $\displaystyle \lim_{h\to 0} \frac{f(x+h)-f(x)}{h}$ actually looks pretty similar to the formula for the slope. The slope formula is 
+    \[
+        m= \frac{y_2-y_2}{x_2-x_1}
+    \]
+    And if we let the two points be $(x,\,f(x))$ and $(x+h,\,f(x+h))$
+    \begin{align*}
+        m&= \frac{f(x+h)-f(x)}{x+h-x}\\ 
+         &= \frac{f(x+h)-f(x)}{h}
+    \end{align*}
+    Which is what we had earlier. However, what about that $\displaystyle \lim_{h\to 0}$? What does that mean? To gain an understanding of what that means, let us consider the graph of an arbitrary function $f(x)$ and label the two points mentioned on it 
+\begin{marginfigure}
+    \centering
+    \incfig{x-plus-h}
+    \caption{Two points $(x,\,f(x))$ and $(x+h,\,f(x+h))$.}
+    \label{fig:x-plus-h}
+\end{marginfigure}
+Then we want $\displaystyle \lim_{h\to 0}$, meaning that we want the distance between the two points as close to each other as humanly possible. If we increment steps as $h$ approaches 0. 
+
+\begin{figure*}[H]
+    \centering
+    \sidecaption{
+    The two points $(x,\,f(x))$ and $(x+h,\,f(x+h))$ as they get closer and closer  $\displaystyle \lim_{h\to 0}$. As you can imagine, it will form a tangent line.
+    \label{fig:limit-h-to-zero}
+    }
+    \incfig{limit-h-to-zero}
+\end{figure*}
+
+And as you can see from the figure, as $h\to0$, the point $\text{B}\to \text{A}$, and as it B approaches A, it forms a tangent line at that point A. 
+
+Therefore, this makes sense that we must take the $\displaystyle \lim_{h\to 0} \frac{f(x+h)-f(x)}{h}$ to get the tangent slope.\sidenote{Another way to think about this is that we are trying to find the \textbf{instantaneous} rate of change. That is, the slope of two points that are infinitely close to each other as possible.}
+\end{derivation}
+
+\section{Derivative Examples}
+Now that we intuition behind Definition \ref{def:first-principle} we can apply it to some basic functions.
+\begin{eg}
+    To determine $f'(x)$ if $f(x)=x^2$, we substitute it into the formula 
+    \begin{align*}
+        f'(x)&= \lim_{h\to 0} \frac{f(x+h)-f(x)}{h}\\ 
+        &= \lim_{h\to 0} \frac{(x+h)^2-x^2}{h}\\ 
+        &= \lim_{h\to 0} \frac{x^2+2xh+h^2-x^2}{h}\\ 
+        &= \lim_{h\to 0} \frac{h(2x+h)}{h}\\ 
+        &= \lim_{h\to 0} 2x+h\\ 
+        &= 2x
+    \end{align*}
+    $\therefore$ the derivative of $x^2$ is $2x$.\sidenote{Just as a reminder, $f'(x)$ means that it is the \textbf{slope} of the tangent line at a certain point; it isn't the equation of the tangent line at that point.}
+\end{eg}
+
+\begin{eg}
+    For $f(x)=(x+3)^3$, determine $f'(x)$. We will use the formula for $f'(x)$ 
+\end{eg}
+
+\section{The Second Derivative}
+The first derivative is the 
+
+\section{Remark on Notation}
+There are several ways to denote a derivative. The first way is the Newton notation, where we denote the order\footenote{We call the level of the derivative (first, second, third, etc) by ``order''. So for example, if I were to say a third ordered derivative, we would be talking about the third derivative.} of the derivative 
+
+\end{document}

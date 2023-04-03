@@ -1,0 +1,123 @@
+\documentclass[working]{tuftebook}
+
+\usepackage{standalone}
+\input{../preamble/preamble.tex}
+\input{../preamble/laterPreamble.tex}
+
+\begin{document}
+\chapter{The Limit}
+\vspace{-2em}
+The limit is one of the most crucial topics in calculus, because it helps us define the derivative as well as calculate them. The limit is usually applied to a variable, where that variable approaches some number infinitely close.
+
+There is generally one definition of the limit, the \emph{Epsilon Delta Definition of a Limit}, but that is too complicated for our purposes.\sidenote{The Epsilon Delta Definition of a Limit appears in year 1 to 2 of university calculus.} Our definition is much simpler.
+
+\begin{definition}[Definition of a Limit]
+    The limit for a variable $x$ to some value $a$ is denoted by 
+    \[
+        x\to a
+    \]
+    Or
+    \[
+        \lim_{x\to a}
+    \]
+    Where the lim stands for ``limit''. Both of these are pronounced ``as $x$ approaches $a$'', and that implies ``as $x$ becomes infinitely close to $a$''.
+\end{definition}
+
+What does it mean for $x$ to become ``infinitely close to $a$''? Let's consider for $a=2$. When we say $x\to 1$, this implies some number infinitely close to 2. This can be $1.0000....0001$ or $0.99999....9$; we can clearly see that both of these numbers are ``infinitely'' close to 2 (see Figure \ref{fig:infinitely-close}).  
+
+\begin{figure}[ht]
+    \centering
+    \incfig{infinitely-close}
+    \caption{We keep on dividing the parts between $ \frac{1}{2}$ and 1 by half until infinity. It will never reach 1, but it becomes infinitely close to 1 as we keep on repeating this process.}
+    \label{fig:infinitely-close}
+\end{figure}
+
+The most important thing to remember for a limit is that it approaches the value, but is never that value. This becomes important when we are determing the derivative of functions using the First Principle.
+
+It should be noted that the value for the limit of a variable is independent to other variables. For example, if we had $\displaystyle \lim_{x\to 0}(x+y)$, the $y$ is independent of the $x$, so we can really write $\displaystyle y+\lim_{x\to 0}x$.\sidenote{The limit rule that we just used is called the sum property for limits, where $y$ is a constant that isn't dependent of $x$.}
+
+\section{Sum Property}\label{def:sum-property}
+\begin{definition}
+    For functions $f(x)$ and $g(x)$, the limit of their sum is the sum of their limits 
+    \[
+        \lim_{x\to a} \left[ f(x)+g(x) \right]= \lim_{x\to a}f(x)+ \lim_{x\to a}g(x)
+    \]
+    And if there is a constant $C$
+    \[
+        \lim_{x\to a} \left[ f(x)+C \right]= C+\lim_{x\to a}f(x)
+    \]
+\end{definition}
+And we will not dive into the proof for this property. 
+
+\section{Difference Property}
+\begin{definition}
+    For functions $f(x)$ and $g(x)$, the limit of their difference is the difference of their limits 
+    \[
+        \lim_{x\to a} \left[ f(x)-g(x) \right]= \lim_{x\to a}f(x)- \lim_{x\to a}g(x)
+    \]
+    And if there is a constant $C$
+    \[
+        \lim_{x\to a} \left[ f(x)-C \right]=-C+ \lim_{x\to a}f(x)
+    \]
+    Or 
+    \[
+        \lim_{x\to a} \left[ C-f(x) \right]=C- \lim_{x\to a}f(x)
+    \]
+\end{definition}
+\begin{myproof}
+    We will prove this using Definition \ref{def:sum-property}
+    \begin{align*}
+        \lim_{x\to a} \left[ f(x)-g(x) \right]&= \lim_{x\to a}f(x)+ (\lim_{x\to a} -\left[ g(x) \right])\\
+                                              &= \lim_{x\to a}f(x)- \lim_{x\to a}g(x)
+    \end{align*}
+    Where it because the negative is independent of the limit (it is a constant multiplier), we can drag it outside of the limit.\sidenote{These proofs aren't ``mathematical'', but these properties are pretty intuitive so this will suffice. You can search up the actual proofs online. They are pretty weird though.}
+\end{myproof}
+
+\newpage
+\section{Product Property}\label{def:product}
+\begin{definition}
+    For functions $f(x)$ and $g(x)$, the limit of their product is the product of their limits 
+    \[
+        \lim_{x\to a}f(x)g(x)= \lim_{x\to a}f(x)\cdot \lim_{x\to a}g(x)
+    \]
+\end{definition}
+The proof for this is too obscure, so we won't include that here. Just remember this property.
+
+\section{Quotient Property}
+\begin{definition}
+    For functions $f(x)$ and $g(x)$, the limit of their quotient is the quotient of their limits 
+    \[
+        \lim_{x\to a} \frac{f(x)}{g(x)}= \frac{ \lim_{x\to a}f(x)}{ \lim_{x\to a}g(x)}
+    \]
+\end{definition}
+\begin{myproof}
+    Using Definition \ref{def:product}
+    \begin{align*}
+        \lim_{x\to a} \frac{f(x)}{g(x)}&= \lim_{x\to a}f(x)[g(x)]^{-1}\\
+                                       &= \lim_{x\to a}f(x) \lim_{x\to a}[g(x)]^{-1}\\ 
+                                       &= \frac{ \lim_{x\to a}f(x)}{ \lim_{x\to a}g(x)}
+    \end{align*}
+\end{myproof}
+
+\section{Using Limit Properties}
+Now that we have established the properties of limits, we can use them in some examples. 
+
+\begin{fullwidth}
+\begin{eg}
+    Evaluate $\displaystyle \lim_{h\to 0}(x+h)$. In this case, we see that the limit is evaluating $h\to0$. Therefore, $x$ is completely independent in this limit. Hence, we write
+    \begin{align*}
+        \lim_{h\to 0}(x+h)&=x+ \lim_{h\to 0}h\\ 
+                          &=x
+    \end{align*}
+    Since as $h\to0$, we approximate it to be 0, leaving us with just $x$.
+\end{eg}
+\begin{eg}
+    Evaluate $\displaystyle \lim_{x\to 2} \frac{x^2}{x+1}$. We can actually just plug in $x=2$ into the numerator and denominator 
+    \begin{align*}
+        \lim_{x\to 2} \frac{x^2}{x+1}&= \frac{(2)^2}{(2)+1}\\ 
+                                     &= \frac{4}{3}
+    \end{align*}
+\end{eg}
+\end{fullwidth}
+
+\end{document}

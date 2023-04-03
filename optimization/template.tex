@@ -1,0 +1,175 @@
+\documentclass[working]{tuftebook}
+
+\usepackage{standalone}
+\input{../preamble/preamble.tex}
+\input{../preamble/laterPreamble.tex}
+
+\begin{document}
+\chapter{Related Rates and Optimization}
+\vspace{-2em}
+One thing that the derivative is known for is calculating rates. Because of this, we can use calculus to determine the rate at which something will be optimized. For example,what is the fuel efficient way to get from Point A to Point B? What is the best way to create tissue boxes such that the surface area is minimized? The answer to these questions lie in the heart of optimization.  
+
+\begin{definition}[Optimization]
+    In determining the best way to optimize something, we think of it as a function. Thus, when we are optimizing a function, we are looking for the largest or smallest value that a function can take. 
+\end{definition}
+\begin{eg}
+    A manufacturer needs to make a cylindrical can that will hold 1.5 litres of liquid. Determine the dimensions of the can that will minimize the amount of material used in its construction (see Figure \ref{fig:cylinder-example}).
+\end{eg}
+\begin{marginfigure}
+    \centering
+    \incfig{cylinder-example}
+    \caption{Cylinder visual}
+    \label{fig:cylinder-example}
+\end{marginfigure}
+    
+We first convert 1.5 litres into $1500 \text{cm}^3$. We also know the volume of a cylinder is 
+\begin{align*}
+    A=\pi r^2h&=1500\quad \text{solve for $h$}\\ 
+    h&= \frac{1500}{\pi r^2}
+\end{align*}
+Next we will substitute this into the formula for the surface area of the cylinder 
+\begin{align*}
+    \text{S}&=2\pi r^2+2\pi rh\\ 
+             &= 2\pi r^2+2\pi r \frac{1500}{\pi r^2}\\ 
+             &=2\pi r^2+ \frac{3000}{r}
+\end{align*}
+Then differentiate with respect to $r$
+\begin{align*}
+    \dv{S}{r}&=4\pi r- \frac{3000}{r^2}\\ 
+             &= \frac{4\pi r^3-3000}{r^2}
+\end{align*}
+And set $ \dv{S}{r}=0$
+\begin{align*}
+    \dv{S}{r}= \frac{4\pi r^3-3000}{r^2}&=0\\
+    4\pi r^3&=3000\\ 
+    r&= \sqrt[3]{ \frac{3000}{4\pi}}\\
+     &\approx 6.2035
+\end{align*}
+Then the height of the cylinder has to be 
+\begin{align*}
+    h&= \frac{1500}{\pi\sqrt[3]{ \frac{3000}{4\pi}}}\\ 
+     &\approx 12.407
+\end{align*}
+$\therefore$, the manufacturer should make the cylindrical can to have a radius of 6.2035cm and a height of 12.407cm. 
+
+\begin{eg}
+    A particle is moving along the hyperbola $x^2-y^2=5$. As it reaches the point $(3,\,-2)$, the y-coordinate is decreasing at a rate of 0.9cm/s. How fast is the x-coordinate of the point changing, at this instance? See Figure \ref{fig:hyperbola}
+        \begin{marginfigure}
+            \centering
+            \incfig{hyperbola}
+            \caption{Hyperbola $x^2-y^2=5$. It has roots at $x=\pm \sqrt{5}$.}
+            \label{fig:hyperbola}
+        \end{marginfigure}
+
+    We must write down what we know and what the question is asking for. We know that the hyperbola is $x^2-y^2=5$. We also know that at the point $(3,\,-2)$ the y-coordinate is decreasing at a rate of 0.9cm/s. From that second piece of information, we can derive $ \dv{y}{t}(-2)=-0.9$. This is because when $y=-2$, corresponding to the point $(3,\,-2)$, the y-value is decreasing at a rate of -0.9. Now, the question is asking for the rate of change of the x-coordinate at that point, which corresponds to determining $ \dv{x}{t}$ at $x=3$. So in other words, $ \dv{x}{t}=?$ 
+
+    From the equation $x^2-y^2=5$, we will use implicit differentiation to differentiate both sides with respect to $t$
+    \[
+        2x \dv{x}{t}-2y \dv{y}{t}=0 
+    \]
+    Then substituting in the point $(3,\,-2)$ as well as $ \dv{y}{t}=-0.9$ at that point  
+    \begin{align*}
+        2(3) \dv{x}{t}-2(-2)(-0.9)&=0\\ 
+        \dv{x}{t}&= \frac{4(0.9)}{6}\\ 
+                 &= 0.6 \text{m/s}
+    \end{align*}
+    $\therefore$, the x-coordinate is changing at a rate of 0.6m/s. 
+\end{eg}
+
+\newpage
+\begin{problems}
+    \item{Water enters a conical tank at a rate of 9$ \text{ft}^3$/min. The tank stands pointing down and has a height of 15ft and a base radius of 5ft. How fast is the water rising when the water is 6 feet deep?}
+    \marginnote{The first 7 problems are from this video: \url{https://www.youtube.com/watch?v=S2Ab5Euo0Tk}}
+    \item{Car A is travelling west at 50mph and car B is travelling north at 60mph. They are heading towards the same intersection. At what rate are the cars approaching each other when car A is 0.3 miles and car B is 0.4 miles from the intersection?}
+    \item{If $y^2=2x$ and $x$ is increasing at a rate of $ \frac{1}{2}$ units/time, how fast is the slope of the curve changing when $x=32$?}
+\end{problems}
+
+\newpage
+\begin{solutions}
+\begin{marginfigure}
+    \centering
+    \incfig{water-through-cone}
+    \caption{A conical tank. $ \text{Volume}= \frac{1}{3}\pi r^2h$. Not drawn to scale.}
+    \label{fig:water-through-cone}
+\end{marginfigure}
+
+    \item{From the problem, we draw out Figure \ref{fig:water-through-cone}. In the figure, the larger cylinder is the cylindrical tank and the darker cylinder is occupied by the water. Then, we would like to know what $ \dv{h}{t}$ is. Using the chain rule
+            \[
+                \dv{h}{t}= \dv{v}{t} \dv{h}{v}
+            \]
+        And we know that $ \dv{v}{t}=9$, since water enters the conical tank at a rate of 9$ \text{ft}^3$/min
+        \[
+            \dv{h}{t}=9 \dv{h}{v}
+        \]
+        All we have to solve for now is $ \dv{h}{v}$. This part is a little bit tricky, since we still have the variable $r$, so we cannot just differentiate the volume of the cylinder, which is $v= \frac{1}{3}\pi r^2h$. Therefore, consider similar triangles $\triangle PCQ$ and $\triangle P_2C_2Q$. We see that
+        \begin{align*}
+            \frac{CQ}{PC}&= \frac{QC_2}{P_2C_2}\\ 
+            \frac{15}{5}&= \frac{h}{r}\\ 
+            \frac{1}{3}&= \frac{h}{r}\\ 
+            r&= \frac{h}{3}
+        \end{align*}
+        And so the volume of the water at height $h$ is 
+        \begin{align*}
+            v&= \frac{1}{3}\pi( \frac{h}{3})^2h\\ 
+             &= \frac{\pi}{27}h^3
+        \end{align*}
+        And now we can differentiate both sides with respect to $v$ 
+        \begin{align*}
+            \dv{}{v}(v)&= \frac{\pi}{81} \dv{}{v}h^3\\ 
+            1&= \frac{\pi}{27}3h^2 \dv{h}{v}\\ 
+            \dv{h}{v}&= \frac{9}{\pi h^2}
+        \end{align*}
+        Substituting this back into our equation for $ \dv{h}{t}$
+        \begin{align*}
+            \dv{h}{t}&=9( \frac{9}{\pi h^2})\\ 
+                     &= \frac{81}{36\pi}
+        \end{align*}
+        $\therefore$ the height of the water is changing at a rate of $ \frac{81}{36}\pi$ft/s. 
+        }
+
+        \begin{marginfigure}
+            \centering
+            \incfig{car-a-car-b}
+            \caption{The distance between car A and the intersection is a, the distance between car B and the intersection is b, and the distance between the two cars is c.}
+            \label{fig:car-a-car-b}
+        \end{marginfigure}
+    
+    \item{In Figure \ref{fig:car-a-car-b}, we will label the center to be where the cars will intersect. Then approaching from the left will be car A and approaching from the bottom will be car B. We would like to know the rate at which the distance AB decreases. To get started, we will calculate the length of c using pythagorean's theorem
+            \[
+                c^2=a^2+b^2
+            \]
+            Then, we also know that $ \dv{a}{t}=-50$ and $ \dv{b}{t}=-60$\sidenote{We use -50 and -60 because we see that the lengths of a and b are decreasing.}. Using implicit differentiation 
+        \begin{align*}
+            2c \dv{c}{t}&= 2a \dv{a}{t}+ 2b \dv{b}{t}\\ 
+            \dv{c}{t}&= \frac{-2a(50)-2b(60)}{2c}\\ 
+                     &= \frac{-100a-120b}{2(a^2+b^2)}
+        \end{align*}
+        Then we plug in for when $a=0.3$ and $b=0.4$
+        \begin{align*}
+            \dv{c}{t}&= \frac{-50(0.3)-120(0.4)}{2(0.3^2+0.4^2)}
+                     &=-78 
+        \end{align*}
+        $\therefore$ the cars are approaching each other at a rate of 78mph.
+        }
+
+        \item{To determine how fast the slope of a curve is changing, we need to calculate $ \dv[2]{y}{x}$. If we use implicit differentiation ocne 
+                \begin{align*}
+                    2y \dv{y}{x}&= 2\\
+                    \dv{y}{x}&= \frac{1}{y}\\ 
+                             &= \frac{1}{ \sqrt{2x}}
+                \end{align*}
+                And differentiate once more 
+                \begin{align*}
+                    \dv[2]{y}{x}&= -\frac{1}{2}(2)(2x)^{- \frac{3}{2}}\\ 
+                                &=-\frac{1}{(2x)^{ \frac{3}{2}}} 
+                \end{align*}
+                And now substitute $x=32$ 
+                \begin{align*}
+                    \dv[2]{y}{x}&=- \frac{1}{(2\cdot 32)^ \frac{3}{2}}\\ 
+                                &=-\frac{1}{512}
+                \end{align*}
+                $\therefore$ the slope of the curve at $x=32$ is changing at a rate of $ \frac{1}{512}$\sidenote{We do not care about the negative in this case. }. 
+            }
+\end{solutions}
+
+\end{document}

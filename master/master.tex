@@ -1,0 +1,45 @@
+\documentclass[working]{tuftebook}
+
+\usepackage{standalone}
+\input{../preamble/preamble.tex}
+\input{../preamble/laterPreamble.tex}
+
+\title{Calculus}
+\date{2023}
+\author{Kenny Chen}
+\begin{document}
+    
+    \renewcommand{\thepage}{\roman{page}}
+    \maketitle
+    % \includepdf[pages=1, fitpaper=true]{./kuleuven-template/covers.pdf}
+    \thispagestyle{empty}
+    % \input{copyright.tex}
+    \pagestyle{plain}
+    \setcounter{page}{0}
+    \input{../preface/template.tex}
+    % \input{summary.tex}
+    % \listofsymbols
+    \tableofcontents
+    % \cleardoublepage
+    \renewcommand{\thepage}{\arabic{page}}
+    \setcounter{page}{1}
+    \pagestyle{normal}
+    \input{../limit/template.tex}
+    \input{../derivative/template.tex}
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \input{../dne/template.tex}
+    \input{../trigonometric/template.tex}
+    \input{../exponential/template.tex}
+    \input{../optimization/template.tex}
+    \input{../taylor/template.tex}
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    % \input{todo.tex}
+    % \input{conclusion.tex}
+    % \input{chap-outlook.tex}
+
+
+    % \printbibliography
+    % \includepdf[pages=2, fitpaper=true]{./kuleuven-template/covers.pdf}
+\end{document}

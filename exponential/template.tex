@@ -1,0 +1,139 @@
+\documentclass[working]{tuftebook}
+
+\usepackage{standalone}
+\input{../preamble/preamble.tex}
+\input{../preamble/laterPreamble.tex}
+
+\begin{document}
+\chapter{Exponential and Logarithmic Functions}
+\vspace{-2em}
+Exponential and logarithmic functions are really important within calculus. They have many applications in chemistry, physics, economics, and countless other subjects. One application that wouldn't be possible without calculus is the \emph{half-life equation}.\sidenote{The half-life equation is a system of equations that shows when the half-life of a quantity will occur. A common fact is that the atoms within the molecule decay at a rate proportional to the number of atoms and the activity measured in terms of atoms per minute. If $N(t)$ is the molecules present at time $t$, then what we are representing is $$N(t)\varpropto t$$ The differential equation obtained from this is  
+    \[
+\dv{N}{t}=k\cdot N(t)
+    \]
+}
+
+We will begin this chapter with the derivative of $f(x)=e^x$, and what makes Euler's number $e$ so special. This gives insight as to how we calculate the derivative of other exponential and logarithmic functions. 
+
+If you do not want to read and would prefer videos instead (personally I would much rather watch videos), check out these two videos in order:
+\begin{enumerate}
+    \item{3blue1brown: \url{https://www.youtube.com/watch?v=m2MIpDrF7Es}.}
+    \item{blackpenredpen: \url{https://www.youtube.com/watch?v=oBlHiX6vrQY}.}
+\end{enumerate}
+
+\section{The Definition of e}
+% Euler's number $e$, which is approximately $2.7182818$, is a very strange number. It has its applications in economics and data management, but what are its origins in calculus? Let us first establish some definitions  
+\begin{definition}
+        The value of $e$ is calculated by evaluating 
+        \[
+            e=\lim_{n\to \infty} \left( 1+ \frac{1}{n} \right)^n
+        \]
+        And letting $n= \frac{1}{h}$ gives us the second definition 
+        \[
+            e= \lim_{h\to 0} \left( 1+h \right)^ \frac{1}{h}
+        \]
+    \end{definition}
+    And as a result of this we have the following lemma\sidenote{You can see the proof for the more general case for $e^{abx}$: \url{https://youtu.be/HM-kwHR4VO4}.} 
+    \begin{lemma}[Formula for $e^x$]
+        The value of $e^x$ can be determined by 
+        \[
+            e^x= \lim_{n\to \infty} \left( 1+ \frac{1}{n} \right)^{nx}
+        \]
+        or
+        \[
+            e^x= \lim_{n\to \infty} \left( 1+ \frac{x}{n} \right)^n
+        \]
+    \end{lemma}
+
+\section{The Natural Log}
+\begin{definition}
+    The natural log is the inverse of $f(x)=e^x$. That is, 
+    \[
+        \ln x=f^{-1}(x)
+    \]
+    Where we denote the natural logarithm with $ \ln x$.
+\end{definition}
+The natural log is key when it comes to determining the derivative of exponential and logarithmic functions, since it is the inverse of $e^x$. 
+
+\section{Derivative of e}
+\begin{theorem}\label{thm:e^x derivative}
+    The derivative of the function $e^x$ is 
+    \[
+        \dv{}{x} e^x=e^x
+    \]
+
+\end{theorem}
+This result is rather shocking--the derivative of a function is itself? An interesting fact is that $e^x$ is the only function where the derivative is itself.
+\begin{myproof}
+    According to the definition of derivative if $f(x)= \sin x$ then $f'(x)$ is
+    \begin{align*}
+        f'(x)&= \lim_{h\to 0} \frac{e^{x+h}-e^x}{h}\\ 
+             &= \lim_{h\to 0} \frac{e^x(e^h-1)}{h}\\
+             &= e^x \lim_{h\to 0} \frac{e^h-1}{h}\\ 
+             &= e^x \lim_{h\to 0} \frac{((1+ h)^ \frac{1}{h})^h-1}{h}\\
+             &= e^x \lim_{h\to 0} \frac{h}{h}\\ 
+             &= e^x
+    \end{align*}
+
+    \end{myproof}
+
+\section{Derivative of Exponentials}
+\begin{theorem}
+    As a result of Theorem \ref{thm:e^x derivative} the derivative of $a^x$ is 
+    \[
+        \dv{}{x}a^x=a^x \ln a
+    \]
+\end{theorem}
+\begin{myproof}
+    Now that we have proven $ \dv{}{x}e^x=e^x$, we can proceed with this proof\sidenote{The reason we have to bring $x$ back into the exponent in step 3 is because if we did not do that, then we could not simplify it to $a^x$.}
+    \begin{align*}
+        \dv{}{x}a^x&= \dv{}{x}\/(e^{ \ln(a^x)}),\quad \text{bring the $x$ in the power down}\\
+                   &= \dv{}{x}\/(e^{ \ln (a)x}),\quad \text{use the chain rule}\\
+                   &= e^{ \ln (a)x}\cdot \ln(a)(1),\quad \text{put the $x$ back in the power}\\ 
+                   &=e^{ \ln (a^x)}\ln a\\ 
+                   &=a^x \ln a
+    \end{align*}
+\end{myproof}
+
+\section{Derivative of the Natural Log}
+\label{sec:derivative-of-the-natural-log}
+Before we determine $ \dv{}{x} \text{log}_{a}(x)$, we have to first consider $ \dv{}{x} \ln x$. 
+\begin{theorem}[Derivative of the Natural Log]
+    \[
+        \dv{}{x} \ln x= \frac{1}{x}
+    \]
+    For $x>0$
+\end{theorem}
+\vspace{-3em}
+\begin{myproof}
+    We will make use of implicit differentiation. Let $y= \ln x$
+    \begin{align*}
+        y&=\ln x\\
+        e^y&=e^{ \ln x}=x\\ 
+        e^y\dv{y}{x}&=1\\ 
+        \dv{y}{x}&= \frac{1}{e^y}\\ 
+                 &= \frac{1}{e^{ \ln x}}\\ 
+                 &= \frac{1}{x}
+    \end{align*}
+\end{myproof}
+
+\section{Derivative of Logarithms}
+Using what we know from Section \ref{sec:derivative-of-the-natural-log} we can finally determine $ \dv{}{x} \text{log}_{a}x$. 
+\begin{theorem}
+    The derivative of $ \text{log}_{a}x$ is 
+    \[
+        \dv{}{x} \text{log}_{a}x= \frac{1}{x \ln a}
+    \]
+\end{theorem}
+\begin{myproof}
+    We use implicit differentiation. Let $y= \text{log}_{a}x$
+    \begin{align*}
+        y&= \text{log}_{a}x\\ 
+        a^y&=x\\ 
+        a^y \ln a \dv{y}{x}&= 1\\ 
+        \dv{y}{x}&= \frac{1}{a \ln a}\\ 
+                 &= \frac{1}{x \ln a} 
+    \end{align*}
+\end{myproof}
+
+\end{document}

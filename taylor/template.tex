@@ -1,0 +1,34 @@
+\documentclass[working]{tuftebook}
+
+\usepackage{standalone}
+\input{../preamble/preamble.tex}
+\input{../preamble/laterPreamble.tex}
+
+\begin{document}
+\chapter{Taylor's Theorem and Power Series}
+\vspace{-2em}
+\begin{marginfigure}
+    \centering
+    \incfig{bell-curve}
+    \caption{A bell curve}
+    \label{fig:bell-curve}
+\end{marginfigure}
+
+Some functions are impossible to integrate with elementary techniques. Some examples are
+\[
+    \frac{ \sin x}{x},\quad e^{-x^2},\,\text{and}\quad \sqrt{1-k^2sin^2x}
+\]
+Where $k$ is some constant less than 1. The first function is used as a common example to demonstrate the \emph{Feynman Technique}. The second function is a bell curve (see Figure \ref{fig:bell-curve}), which is very important in statistics. The third function comes up in trying to find the arc length of an ellipse. This is one of the reasons why there is a need to simplify these functions intomuch simpler ones so that we can easily integrate them. 
+
+Another use is for calculating the values for special functions, such as the trigonometry functions. That is, calculating values such as $ \sin56 ^{\circ}$, for example.
+
+\section{Approximating Functions using Polynomials}
+One way to approximate functions is by using polynomials. 
+\begin{theorem}[Taylor's Theorem]
+    Any function satisfying certain conditions may be represented by Taylor Series
+    \[
+        f(x)=f(a)+f'(a)(x-a)+ \frac{f''(a)}{2!}(x-a)+...+ \frac{f^{(n)}(a)}{n!}(x-a)^n
+    \]
+\end{theorem}
+
+\end{document}

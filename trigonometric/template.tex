@@ -1,0 +1,167 @@
+\documentclass[working]{tuftebook}
+
+\usepackage{standalone}
+\input{../preamble/preamble.tex}
+\input{../preamble/laterPreamble.tex}
+
+\begin{document}
+\chapter{Trigonometric Functions}
+\vspace{-2em}
+One of the most important applications of calculus is in physics. Calculus helps us understand the motion of a swining pendulum, projectile motion, and countless other applications. Wave functions such as $ \sin x$ and $ \cos x$ all play a huge role in deriving these motions, making their derivatives essential in physics. 
+
+\begin{marginfigure}
+    \centering
+    \incfig{projectile-motion}
+    \caption{Projectile motion: to determine the shortest time, we must differentiate $ \sin \theta$.}
+    \label{fig:projectile-motion}
+\end{marginfigure}
+
+We will begin this section in trigonometric functions by beginning with the basics: the derivative of basic trigonometric functions. 
+
+\section{The Derivative of sinx}
+The derivative of trigonometric originates here, in differentiating $ \sin x$. This is because once you can differentiate $ \sin x$, then you can differentiate all of the other functions, using the rules that we have established and $ \cos x= \sin ( \frac{\pi}{2}-x)$. 
+\begin{theorem}[Derivative of $\sin x$]
+    The derivative of the function $ \sin x$ is
+    \[
+        \dv{}{x} \sin x= \cos x
+    \]
+\end{theorem}
+\begin{myproof}
+    According to the definition of derivative, if $f(x)= \sin x$ 
+    \begin{align*}
+        f'(x)&= \lim_{h\to 0} \frac{ \sin(x+h)- \sin x}{h}\\ 
+             &= \cos x \lim_{h\to 0} \frac{ \sin h}{h}+ \sin x \lim_{h\to 0} \frac{ \cos h-1}{h}\\
+    \end{align*}
+    But what are $ \lim_{h\to 0} \frac{ \sin h}{h}$ and $ \lim_{h\to 0} \frac{ \cos h-1}{h}$? We will calculate the first limit, and it will becoem apparent that the latter limit can be calculated using the result of the first. To evaluate the first limit, consider Figure \ref{fig:sine-limit} 
+
+\begin{marginfigure}
+    \centering
+    \incfig{sine-limit}
+    \caption{We construct a circle with radius of $1$. We also form triangles $\triangle OPR$ and $\triangle OQR$.}
+    \label{fig:sine-limit}
+\end{marginfigure}
+
+From Figure \ref{fig:sine-limit}, we will consider and compare the areas of $\triangle OPR$, sector $OPR$, and lastly $\triangle OQR$. 
+
+The area of $\triangle OPR$ is 
+\begin{align*}
+    \triangle OPR \text{ Area}&= \frac{PS\cdot OR}{2}\\
+                              &= \frac{| \sin \theta\cdot 1|}{2}\\ 
+                              &= \frac{| \sin  \theta|}{2}
+\end{align*}
+The area of sector $OPR$ is
+\begin{align*}
+    OPR \text{ Area}&= \frac{ |\theta\cdot r^2|}{2}\\ 
+                    &= \frac{ |\theta|}{2}
+\end{align*}
+And lastly the area of $\triangle OQR$ is 
+\begin{align*}
+    \triangle OQR \text{ Area}&= \frac{|OR\cdot QR|}{2}\\ 
+                              &= \frac{|1\cdot \tan \theta|}{2}
+\end{align*}
+And from Figure \ref{fig:sine-limit}, we can see that from comparing the areas 
+\begin{center}
+    Areas
+\end{center}
+\vspace{-0.5em}
+\[
+    \triangle OQR \leq OPR \leq \triangle OQR\\
+\]
+\[
+    \frac{| \sin \theta|}{2}\leq \frac{| \theta|}{2}\leq \frac{| \tan \theta|}{2}\\
+\]
+\[
+    | \sin \theta|\leq |\theta|\leq | \frac{ \sin \theta}{ \cos \theta}|\\ 
+\]
+\[
+    1\leq |\frac{ \theta}{ \sin \theta}|\leq \frac{1}{| \cos \theta|}
+\]
+Then we will take the reciprocal on all sides. When do this we have to remember to flip the inequalities 
+\[
+    1\geq | \frac{ \sin \theta}{ \theta}|\geq | \cos \theta|
+\]
+Next we will take the limit on all sides 
+\[
+    \lim_{ \theta\to 0}1\geq \lim_{ \theta\to 0}| \frac{ \sin \theta}{ \theta}|\geq \lim_{ \theta\to 0}| \cos \theta|
+\]
+And we can now remove the absolute values, since $\displaystyle \theta>0$ and $\displaystyle \lim_{ \theta\to 0} \sin \theta>0$ and $ \lim_{ \theta\to 0} \cos \theta>0$ 
+\[
+    1\geq \lim_{ \theta\to 0} \frac{ \sin \theta}{ \theta}\geq \lim_{ \theta\to 0} \cos \theta
+\]
+\[
+    1\geq \lim_{ \theta\to 0} \frac{ \sin \theta}{ \theta}\geq 1
+\]
+And we can readily see from this that because $\displaystyle \lim_{ \theta\to 0} \frac{ \sin \theta}{ \theta}$ is in the middle of these inequalities, this limit has to evaluate to 1.\sidenote{If you would like a more visual way to derive this result, I would recommend checking out Khan Academy's video: \url{https://youtu.be/5xitzTutKqM}.}
+
+So we determined that $ \lim_{h\to 0} \frac{ \sin h}{h}=1$, but what is the value for $ \lim_{h\to 0} \frac{ \cos h-1}{h}$? We can actually use the first limit to determine the value of this limit. We will multiply the numerator and denominator by $ \cos h+1$
+\begin{align*}
+    \lim_{h\to 0} \frac{ \cos h-1}{h}&=\lim_{h\to 0} \frac{ \cos h-1}{h} \frac{ \cos h+1}{ \cos h+1}\\ 
+                                     &=- \lim_{h\to 0}\frac{ \sin ^2h}{h( \cos h+1)}\\ 
+                                     &=- \lim_{h\to 0} \frac{ \sin h}{h}\lim_{h\to 0} \frac{ \sin h}{ \cos h+1}\\
+                                     &=-1(0)
+                                     &=0
+\end{align*}
+So now we know that $ \lim_{h\to 0} \frac{ \sin h}{h}=1$ and $ \lim_{h\to 0} \frac{ \cos h-1}{h}=0$, we substitute these values in for $f'(x)$ 
+\begin{align*}
+    f'(x)&= \cos x (1)+ \sin x(0)\\ 
+         &= \cos x
+\end{align*}
+$\therefore$ $ \dv{}{x} \sin x= \cos x$.
+\end{myproof}
+
+\section{The Derivative of Trigonometric Functions}
+\vspace{1em}
+\begin{theorem} Below is a list of all trigonometric derivatives
+    \begin{align*}
+        \dv{}{x} \sin x&= \cos x\tag{1}\\
+        \dv{}{x} \cos x&=- \sin x\tag{2}\\ 
+        \dv{}{x} \tan x&= \sec ^2x\tag{3}\\ 
+        \dv{}{x} \cot x&= - \csc ^2x\tag{4}\\ 
+        \dv{}{x} \sec x&= \sec x \tan x\tag{5}\\ 
+        \dv{}{x} \csc  x&= - \csc x \cot  x\tag{6}
+    \end{align*}
+\end{theorem}
+\marginnote{A good way to remember this is the derivative of any trigonometry function that starts with the letter ``c'' is negative. Anything else is positive. Also, the derivatives of $ \tan x$, $ \sec x$ and $ \cot  x$, $ \csc x$ are basically opposites. You pair $ \tan x$ with $ \sec x$ and $ \cot  x$ with $ \csc x$.}
+
+\textbf{Proofs.}\\
+(2) We use the identity $ \cos x= \sin ( \frac{\pi}{2}-x)$
+\begin{align*}
+    \dv{}{x} \cos x&= \dv{}{x} \sin ( \frac{\pi}{2}-x)\\ 
+                   &= \cos ( \frac{\pi}{2}-x)(-1)\\ 
+                   &=- \sin x 
+\end{align*}
+(3)  We use the quotient rule 
+\begin{align*}
+    \dv{}{x} \tan x&= \dv{}{x} \frac{ \sin x}{ \cos x}\\ 
+    &= \frac{ \cos x (\cos x)- (- \sin x)( \sin x)}{ \cos ^2x}\\ 
+    &= \frac{1}{ \cos ^2x}\\ 
+    &= \sec ^2x
+\end{align*}
+
+(4) We use the quotient rule 
+\begin{align*}
+    \dv{}{x} \cot x&= \dv{}{x} \frac{ \cos x}{ \sin x}\\ 
+                   &= \frac{- \sin x( \sin x)- \cos x( \cos x)}{ \sin ^2x}\\ 
+                   &= -\frac{1}{ \sin ^2x}\\ 
+                   &=- \csc ^2x
+\end{align*}
+
+(5) We use the chain rule and power rule 
+\begin{align*}
+    \dv{}{x} \sec x&= \dv{}{x}\frac{1}{ \cos x}\\ 
+                   &= \dv{}{x}( \cos x)^{-1}\\ 
+                   &= -( \cos x)^{-2}(- \sin x)\\ 
+                   &= \frac{ \sin x}{ \cos x}\\ 
+                   &= \sec x \tan x
+\end{align*}
+
+(6) We use the chain rule and the power rule 
+\begin{align*}
+    \dv{}{x} \csc x&= \dv{}{x} \frac{1}{ \sin x}\\ 
+                   &= \dv{}{x}( \sin x)^{-1}\\ 
+                   &= -( \sin x)^{-2} \cos x\\ 
+                   &= - \frac{ \cos x}{ \sin ^2x}\\ 
+                   &=- \csc x \cot  x
+\end{align*}
+
+\end{document}
