@@ -1,0 +1,69 @@
+\documentclass[working]{tuftebook}
+
+\usepackage{standalone}
+\input{../preamble/preamble.tex}
+\input{../preamble/laterPreamble.tex}
+
+\begin{document}
+\renewcommand{\thepage}{\arabic{page}}
+\pagestyle{plain}
+\pagestyle{normal}
+\chapter{L'Hopital's Rule}
+\vspace{-2em}
+Sometimes, there are limits that we cannot evaluate by simply manipulation. For example, how are we suppose to evaluate 
+\[
+    \lim_{x\to 0} \frac{3^x-1}{x}
+\]
+The only way we can do this, is by using something called \emph{L'Hopital's Rule}.
+
+\begin{definition}[L'Hopital's Rule]
+    Suppose we have two arbitrary functions $f(x)$ and $g(x)$. Then, as $x\to0$ or $x\to\infty$, if both $f(x)=0$ and $g(x)=0$ or $f(x)=\infty$ and $g(x)=\infty$, then 
+    \[
+        \lim_{x\to 0} \frac{f(x)}{g(x)}= \lim_{x\to 0} \frac{f'(x)}{g'(x)}
+    \]
+    Or 
+    \[
+        \lim_{x\to \infty } \frac{f(x)}{g(x)}= \lim_{x\to 0} \frac{f'(x)}{g'(x)}
+    \]
+    In other words, you differentiate the numerator and denominator.
+\end{definition}
+
+\begin{eg}
+    Evaluate $\displaystyle \lim_{x\to 0} \frac{3^x-1}{x}$. Differentiating the numerator and denominator 
+    \begin{align*}
+        \lim_{x\to 0} \frac{3^x-1}{x} &=\lim_{x\to 0} \frac{3^x \ln 3}{1}\\
+                                      &= \ln 3 \frac{1}{1}\\ 
+                                      &= \ln 3
+    \end{align*}
+\end{eg}
+
+\newpage 
+\begin{challenge}
+    \item{Prove that $\displaystyle \lim_{x\to \infty } \left( 1+ \frac{a}{x} \right)^bx=e^{ab}$.}
+    \item{Evaluate $\displaystyle \lim_{x\to \infty } \left(  \frac{2x-1}{2x+1} \right)^x$.}
+\end{challenge}
+\begin{solutions}
+    \item{}
+    \item{We plug in $x= \infty $ we get $( \frac{ \infty }{ \infty })^ \infty $, which doesn't work. Instead, we will first separate the fraction
+            \begin{align*}
+                \lim_{x\to \infty } \left( \frac{2x-1}{2x+1} \right)^x&= \lim_{x\to \infty } \left( \frac{2x+1-2}{2x+1} \right)^x\\ 
+                                                                      &= \lim_{x\to \infty } \left( 1- \frac{2}{2x+1} \right)^x\\ 
+            \end{align*}
+        Then we make the substitution $u=2x+1$, $x= \frac{u-1}{2}$, and limits change from $\displaystyle \lim_{x\to \infty }\to \lim_{u\to \infty }$
+        \begin{align*}
+            \lim_{x\to \infty } \left( 1- \frac{2}{2x+1} \right)^x&= \lim_{u\to \infty } \left( 1- \frac{2}{u} \right)^ \frac{u-1}{2}\\ 
+                                                                  &= \lim_{u\to \infty } \left[ \frac{ \left( 1- \frac{2}{u} \right)^u}{ \left( 1- \frac{2}{u} \right)} \right]^ \frac{1}{2}
+        \end{align*}
+        Then, the denominator evaluates to $\displaystyle \lim_{u\to \infty } \left( 1- \frac{2}{u} \right)=0$
+        \[
+            \lim_{u\to \infty } \left[ \frac{ \left( 1- \frac{2}{u} \right)^u}{ \left( 1- \frac{2}{u} \right)} \right]^ \frac{1}{2}= \lim_{u\to \infty } \left[ \left( 1- \frac{2}{u} \right)^u \right]^ \frac{1}{2}\\
+        \]
+        And from the result obtained in the first challenge problem, we know that $\displaystyle \lim_{u\to \infty } \left( 1- \frac{2}{u} \right)^u= \lim_{u\to \infty } \left( 1+ \frac{-2}{u} \right)^u=e^{-2}$ 
+        \begin{align*}
+            \lim_{u\to \infty } \left[ \left( 1- \frac{2}{u} \right) \right]^ \frac{1}{2}&= \left[ e^{-2} \right]^ \frac{1}{2}\\
+                                                                                         &= \frac{1}{e} 
+        \end{align*}
+        }
+\end{solutions}
+
+\end{document}

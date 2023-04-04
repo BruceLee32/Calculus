@@ -5,10 +5,6 @@
 \input{../preamble/laterPreamble.tex}
 
 \begin{document}
-\renewcommand{\thepage}{\arabic{page}}
-\pagestyle{plain}
-\pagestyle{normal}
-
 \chapter{The Limit}
 \vspace{-2em}
 The limit is one of the most crucial topics in calculus, because it helps us define the derivative as well as calculate them. The limit is usually applied to a variable, where that variable approaches some number infinitely close.
@@ -123,5 +119,133 @@ Now that we have established the properties of limits, we can use them in some e
     \end{align*}
 \end{eg}
 \end{fullwidth}
+\newpage 
+\begin{marginfigure}
+    \centering
+    \incfig{exponential-versus-linear}
+    \caption{$f(x)=e^x$ clearly outgrows $g(x)=x$ for larger values of $x$.}
+    \label{fig:exponential-versus-linear}
+\end{marginfigure}
+\begin{eg}
+    Evaluate $\displaystyle \lim_{x\to \infty } \frac{e^x}{x}$. Now to evaluate this, we need to consider which one rises faster, or the same: $e^x$ or $x$? The reason for this is because if the denominator becomes really big, then this just shrinks to 0, whereas if the numerator is really big, then this grows to infinity. We see that for large values of $x$, $e^x$ clearly outgrows $x$, since it is an exponential function, whereas $x$ is a linear function. So for example, if $x$ was say 99, we will get something like 
+    \begin{align*}
+        \lim_{x\to 99} \frac{e^x}{x}&=\frac{e^{99}}{99}\\
+        &= \text{very large number}
+    \end{align*}
+    And the result would just evaluate larger and larger for larger values of $x$.
+    We can also see in Figure \ref{fig:exponential-versus-linear} that $e^x$ undoubtedly clearly outgrows $x$, so the numertor outgrows the denominator, hence the value shrinks to 0 for $x\to \infty $.
+\end{eg}
+\begin{fullwidth}
+\begin{eg}
+    Evaluate $\displaystyle \lim_{x\to 1} \frac{x}{x-1}$. We can actually just see that letting $x\to1$ makes the denominator approach $0$, and so therefore the fraction approaches $ \infty $
+    \begin{align*}
+        \lim_{x\to 1} \frac{x}{x-1}&\to \frac{1}{1-1}\\ 
+                                   &\to \frac{1}{0}\\ 
+                                   &\to \infty 
+    \end{align*}
+    WHere we write it approaches instead of equals, because we technically cannot have 0 in the denominator. For a more general proof, we will first add $1-1$ so that it is 0 in the numerator 
+    \[
+        \lim_{x\to 1} \frac{x}{x-1}= \lim_{x\to 1} \frac{x-1+1}{x-1}\\
+    \]
+    Then using the limit of sums property 
+    \begin{align*}
+        \lim_{x\to 1} \frac{x-1+1}{x-1}&= \lim_{x\to 1} \frac{x-1}{x-1}+ \lim_{x\to 1} \frac{1}{x-1}\\ 
+                                       &= \lim_{x\to 1}(1)+ \lim_{x\to 1} \frac{1}{x-1}\\ 
+                                       &=1+ \infty \\ 
+                                       &= \infty 
+    \end{align*}
+\end{eg}
+\end{fullwidth}
+\begin{eg}
+    Evaluate $\displaystyle \lim_{x\to -3} \frac{x^3+4x^2+2x-3}{(x-2)(x+3)}$. The trick for this problem (and similar problems) is that we can immediately tell that if this limit evaluates to something, then $(x+3)$ must be factor for the numerator as well.\sidenote{The reason this must be true is because we see that $x\to-3$ makes the factor $(x+3)=0$, and so therefore if we want this limit to not be some value divided by 0, then the numerator must have another $(x+3)$ to cancel out with the $(x+3)$ in the denominator.} And we can immediately see that's the case, since $-3$ is a solution to the numerator, therefore $(x+3)$ must be a factor. 
+\end{eg}
+\newpage
+\begin{fullwidth}
+    So if we use synthetic division for the numerator 
+    \begin{align*}
+        \lim_{x\to -3} \frac{x^3+4x^2+2x-3}{(x-2)(x+3)}&= \lim_{x\to -3} \frac{(x+3)(x^2+x-1)}{(x-2)(x+3)}\\
+                                                       &= \lim_{x\to -3}\frac{x^2+x-1}{x-2}\\ 
+                                                       &= \frac{(-3)^2+(-3)-1}{(-3)-2}\\ 
+                                                       &= \frac{9-4}{-5}\\ 
+                                                       &=-1
+    \end{align*}
+\begin{eg}
+    Evaluate $\displaystyle \lim_{x\to 1} \left[ \frac{1}{1-x}- \frac{3}{1-x^3} \right]$. To evaluate this, we will first combine fractions. How do we combine fractions? We will first make use of the difference of cubes identity:
+    \begin{align*}
+        a^3-b^3&= (a-b)(a^2+b^2+ab)\\
+        1-x^3&=(1-x)(x^2+x+1)
+    \end{align*}
+    Substituting
+    \begin{align*}
+        \lim_{x\to 1} \left[ \frac{1}{1-x}- \frac{3}{1-x^3} \right]&= \lim_{x\to 1} \left[ \frac{1}{1-x}- \frac{3}{(1-x)(x^2+x+1)} \right]\\
+                                                                   &= \lim_{x\to 1} \frac{x^2+x-2}{(1-x)(x^2+x+1)}\\ 
+    \end{align*}
+    Now we still see that we get an undefined value, namely $ \frac{0}{0}$. What we can do is we can try and factor the numerator so that the $(1-x)$ term cancels out with the denominator. Luckily, $(x-1)$, which is the negative of the $(1-x)$ is a factor of the numerator
+    \begin{align*}
+        \lim_{x\to 1} \frac{x^2+x-2}{(1-x)(x^2+x+1)}&= \lim_{x\to 1} \frac{(x-1)(x+2)}{(1-x)(x^2+x+1)}\\
+                                                    &= \lim_{x\to 1} \frac{-\cancel{(1-x)}(x+2)}{\cancel{(1-x)}(x^2+x+1)}\\ 
+                                                    &=- \lim_{x\to 1} \frac{x+2}{x^2+x+1}\\ 
+    \end{align*}
+    And now we can substitute in $x=1$ because it won't give us an undefined answer 
+    \begin{align*}
+        - \lim_{x\to 1} \frac{x+2}{x^2+x+1}&= - \frac{1+2}{1^2+1+1}\\
+                                           &=-1
+    \end{align*}
+\end{eg}
+\end{fullwidth}
+\newpage 
+\begin{fullwidth}
+\begin{eg}
+    Evaluate $\displaystyle \lim_{x\to 4} \frac{ \sqrt{x+5}-3}{x-4}$. We see that if we plug in $x=4$ we get $ \frac{0}{0}$. This is an issue, because this is undefined. However, we have a trick: if we multiply the fraction by $\displaystyle \frac{ \sqrt{x+5}+3}{ \sqrt{x+5}+3}$, the radical in the numerator dissapears 
+    \begin{align*}
+        \lim_{x\to 4} \frac{ \sqrt{x+5}-3}{x-4}&= \lim_{x\to 4} \frac{ \sqrt{x+5}-3}{x-4} \frac{ \sqrt{x+5}+3}{ \sqrt{x+5}+3}\\ 
+                                               &= \lim_{x\to 4} \frac{x-4}{(x-4)( \sqrt{x+5}+3)}\\ 
+                                               &= \lim_{x\to 4} \frac{1}{ \sqrt{x+5}+3}\\ 
+                                               &= \frac{1}{6}
+    \end{align*}
+\end{eg}
+\begin{eg}
+    Evaluate $\displaystyle \lim_{x\to 2} \frac{x^2-2x}{ \sqrt{x+2}-2}$. We will first factor out an $x$ from the numerator
+    \[
+        \lim_{x\to 2} \frac{x^2-2x}{ \sqrt{x+2}-2}= \lim_{x\to 2} \frac{x(x-2)}{ \sqrt{x+2}-2}
+    \]
+Then will multiply the fraction by $\displaystyle \frac{ \sqrt{x+2}+2}{ \sqrt{x+2}+2}$ 
+    \begin{align*}
+        \lim_{x\to 2} \frac{x(x-2)}{ \sqrt{x+2}-2}&= \lim_{x\to 2} \frac{x(x-2)}{ \sqrt{x+2}-2} \frac{ \sqrt{x+2}+2}{ \sqrt{x+2}+2}\\ 
+                                                  &= \lim_{x\to 2} \frac{x(x-2)( \sqrt{x+2}+2)}{x+2-4}\\ 
+                                                  &= \lim_{x\to 2} \frac{x\cancel{(x-2)}( \sqrt{x+2}+2)}{\cancel{x-2}}\\
+                                                  &= 2( \sqrt{2+2}+2)\\ 
+                                                  &= 8
+    \end{align*}
+\end{eg}
+\end{fullwidth}
+\newpage
+\begin{problems}
+    \item{Evaluate $\displaystyle \lim_{x\to 1} \left( \frac{1}{x^2-1}- \frac{2}{x^4-1} \right)$.}
+    \item{Evaluate $\displaystyle \lim_{x\to 2} \frac{x^2-2x}{ \sqrt{2x}-2}$.}
+\end{problems}
+
+\newpage
+\begin{solutions}
+    \item{We know that $x^4-1=(x^2-1)(x^2+1)$ and then we will combine fractions
+            \begin{align*}
+                \lim_{x\to 1} \left( \frac{1}{x^2-1}- \frac{2}{x^4-1} \right)&= \lim_{x\to 1} \left( \frac{1}{x^2-1}- \frac{2}{(x^2-1)(x^2+1)} \right)\\ 
+                                                                             &= \lim_{x\to 1} \left( \frac{x^2-1}{(x^2-1)(x^2+1)} \right)\\ 
+                                                                             &= \lim_{x\to 1} \frac{1}{x^2+1}\\ 
+                                                                             &= \frac{1}{2}
+            \end{align*}
+        }
+    \item{We multiply the fraction by $\displaystyle \frac{ \sqrt{2x}+2}{ \sqrt{2x}+2}$ so that the radicals dissapear
+            \begin{align*}
+                \lim_{x\to 2} \frac{x^2-2x}{ \sqrt{2x-2}}&= \lim_{x\to 2} \frac{x^2-2x}{ \sqrt{2x-2}} \frac{ \sqrt{2x}+2}{ \sqrt{2x}+2}\\ 
+                                                         &= \lim_{x\to 2} \frac{x^2 \sqrt{2x}+2x^2-2x \sqrt{2x}-4x}{2x-4}\\ 
+                                                         &= \frac{1}{2} \lim_{x\to 2} \frac{2x(x-2)+x^2 \sqrt{2x}-2x \sqrt{2x}}{x-2}\\ 
+                                                         &= \frac{1}{2} \lim_{x\to 2} \frac{2x(x-2)+x \sqrt{2x}(x-2)}{x-2}\\ 
+                                                         &= \frac{1}{2} \lim_{x\to 2}(2x+x \sqrt{2x})\\ 
+                                                         &= \frac{1}{2}(4+4)\\ 
+                                                         &= 4
+            \end{align*}
+        }
+\end{solutions}
 
 \end{document}
